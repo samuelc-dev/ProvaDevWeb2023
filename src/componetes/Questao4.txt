@@ -1,0 +1,59 @@
+Os hooks são uma adição importante ao React desde a versão 16.8. Eles são funções especiais que permitem adicionar recursos de estado e outros recursos do React aos componentes funcionais. Os hooks são essenciais para o desenvolvimento React, pois permitem que os componentes funcionais tenham estado interno e acessem recursos de ciclo de vida, sem a necessidade de usar classes.
+
+Um Exemplo é o useState
+
+useState:
+O useState é um hook que permite adicionar e manipular estado em componentes funcionais. Ele retorna um par de valores: o estado atual e uma função para atualizar esse estado. Você pode usar o useState para adicionar recursos de estado a um componente e reagir a mudanças nesse estado.
+
+Exemplo:
+import React, { useState } from 'react';
+
+const Counter = () => {
+  const [count, setCount] = useState(0);
+
+  const increment = () => {
+    setCount(count + 1);
+  };
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={increment}>Increment</button>
+    </div>
+  );
+};
+
+export default Counter;
+
+Neste exemplo, o useState é usado para adicionar o estado count ao componente Counter. A função setCount é usada para atualizar o valor de count. Cada vez que o botão "Increment" é clicado, o estado count é incrementado em 1 e o componente é atualizado para refletir o novo valor.
+
+Um outro exemplo é o useEffect
+
+useEffect:
+O useEffect é um hook que permite executar efeitos colaterais em componentes funcionais, como buscar dados de uma API, manipular o DOM ou se inscrever/desinscrever de eventos. Ele é executado após a renderização do componente e pode ser configurado para ser executado apenas quando certas dependências mudarem.
+
+Exemplo:
+import React, { useEffect, useState } from 'react';
+
+const UserList = () => {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    // Fetch users from API
+    fetch('https://api.example.com/users')
+      .then(response => response.json())
+      .then(data => setUsers(data));
+  }, []);
+
+  return (
+    <ul>
+      {users.map(user => (
+        <li key={user.id}>{user.name}</li>
+      ))}
+    </ul>
+  );
+};
+
+export default UserList;
+
+Neste exemplo, o useEffect é usado para buscar usuários de uma API assim que o componente UserList é renderizado. O useEffect é configurado com uma função de retorno que busca os usuários da API e atualiza o estado users usando a função setUsers. O array de dependências vazio [] garante que o efeito seja executado apenas uma vez, após a montagem inicial do componente.

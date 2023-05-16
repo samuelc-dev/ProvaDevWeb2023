@@ -1,0 +1,7 @@
+Crie um último arquivo chamado PONTOS.TXT. Neste arquivo diga quantos pontos você
+acha que deve ganhar em cada questão:
+
+1 - 2,5
+2 - 2,5
+3 - 2,5
+4 - 2,5
